@@ -1,11 +1,33 @@
+import styles from "../../styles/Post.module.css";
+import imageUrlBuilder from "@sanity/image-url";
+import { useState, useEffect } from "react";
+import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
+
 type PostProps = {
   title: string;
   body: any;
+  image: any;
 };
 
-export const Post = ({ title, body }: PostProps) => {
-  console.log(title, body);
-  return <p>this is post</p>;
+export const Post = ({ title, body, image }: PostProps) => {
+  const [imageUrl, setImageUrl] = useState<ImageUrlBuilder>();
+
+  useEffect(() => {
+    const imageBuilder = imageUrlBuilder({
+      projectId: "ucdj87yh",
+      dataset: "production",
+    });
+    setImageUrl(imageBuilder.image(image));
+  }, [image]);
+
+  return (
+    <div>
+      <div className={styles.main}>
+        <h1>{title}</h1>
+        {imageUrl && <img className={styles.mainImage} src={imageUrl.url()} />}
+      </div>
+    </div>
+  );
 };
 
 export const getServerSideProps = async (pageContext: any) => {
@@ -29,7 +51,9 @@ export const getServerSideProps = async (pageContext: any) => {
       notFound: true,
     };
   } else {
-    return { props: { body: post.body, title: post.title } };
+    return {
+      props: { body: post.body, title: post.title, image: post.mainImage },
+    };
   }
 };
 
