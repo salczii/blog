@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,13 +8,33 @@ export default function Home() {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+      <section>
+        <p className={"my-4"}>
+          Hello 👋 I’m Kacper 👨‍
+          <br /> I’m a Full-Stack Web Developer 🖥️
         </p>
+        <p>
+          You can contact me on{" "}
+          <span style={{ color: "#0070f3" }}>Twitter</span> or visit my{" "}
+          <span style={{ color: "#0070f3" }}>Linkedin</span> and{" "}
+          <span style={{ color: "#0070f3" }}>GitHub</span>
+        </p>
+        <p className={"text-blue-500 cursor-pointer"}>
+          👉 Expand more information 👈
+        </p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Link
+          href="/posts/first-post"
+          className={
+            "text-blue-500 visited:text-purple-500 underline underline-offset-8 decoration-2 decoration-wavy"
+          }
+        >
+          My first post and here is its title
+        </Link>
       </section>
     </Layout>
-  )
+  );
 }
