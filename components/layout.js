@@ -13,9 +13,9 @@ export default function Layout({ children, home }) {
   const isDark = theme === "dark";
   return (
     <div className={`bg-white text-black h-screen ${isDark && "dark"}`}>
-      <div className={"h-screen dark:bg-black dark:text-white"}>
-        <div className={"max-w-max my-auto mx-auto"}>
-          <div className={"absolute top-0 right-0 p-10"}>
+      <div className={"dark:bg-black dark:text-white h-screen"}>
+        <div className={"w-1/2 my-auto mx-auto"}>
+          <div className={"top-0 absolute right-0 p-10"}>
             <ThemeSwitch />
           </div>
           <Head>
@@ -53,27 +53,22 @@ export default function Layout({ children, home }) {
                   <Image
                     priority
                     src="/images/profile.jpeg"
-                    className={utilStyles.borderCircle}
-                    height={108}
-                    width={108}
+                    className={"border rounded-full mb-4"}
+                    height={125}
+                    width={125}
                     alt={name}
                   />
                 </Link>
-                <h2 className={utilStyles.headingLg}>
-                  <Link href="/" className={utilStyles.colorInherit}>
-                    {name}
-                  </Link>
-                </h2>
               </>
             )}
           </header>
           <main>{children}</main>
           {!home && (
-            <div>
+            <div className={"mt-5"}>
               <Link
                 href="/"
                 className={
-                  "text-blue-500 visited:text-purple-500 underline underline-offset-8 decoration-4 decoration-wavy"
+                  "text-blue-500 visited:text-purple-500 hover:underline hover:underline-offset-4 hover:decoration-wavy"
                 }
               >
                 ← Back to home
