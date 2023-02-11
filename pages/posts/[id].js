@@ -1,14 +1,19 @@
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
+import moment from "moment/moment";
 
 export default function Post({ postData }) {
   return (
     <Layout>
       <h1>{postData.title}</h1>
-      <p>{postData.id}</p>
-      <p>{postData.date}</p>
+      <span className={"italic text-gray-600"}>
+        {moment(postData.date).format("LL")}
+      </span>
       <br />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <div
+        className={"mt-5"}
+        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
+      />
     </Layout>
   );
 }

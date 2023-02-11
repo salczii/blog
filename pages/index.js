@@ -39,7 +39,9 @@ export default function Home({ allPostsData }) {
                 {title}
               </Link>
               <br />
-              <span className={"italic text-gray-600"}>{date}</span>
+              <span className={"italic text-gray-600"}>
+                {moment(date).format("LL")}
+              </span>
             </li>
           ))}
         </ul>
