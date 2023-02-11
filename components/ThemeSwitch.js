@@ -8,7 +8,7 @@ const ThemeSwitch = () => {
       onClick={() => (theme === "dark" ? setTheme("light") : setTheme("dark"))}
       className={"text-3xl"}
     >
-      💡
+      {theme === "light" ? "🌑" : "💡"}
     </button>
   );
 };
